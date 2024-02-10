@@ -1,8 +1,8 @@
-This is a simple Full stack website created using Express.js, EJS, mongoDB, and Nodemon.
+### This is a simple Full stack website created using Express.js, EJS, mongoDB, and Nodemon.
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/your-username/My_website.git`
+1. Clone the repository: `git clone https://github.com/sumit957602/My_website.git`
 2. Navigate to the project directory: `cd My_website`
 3. Install dependencies: `npm install`
 
