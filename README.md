@@ -1,4 +1,4 @@
-### This is a simple Full stack website created using Express.js, EJS, mongoDB, and Nodemon.
+### This is my Full stack website created using Express.js, EJS, mongoDB, and Nodemon.
 
 ## Installation
 
