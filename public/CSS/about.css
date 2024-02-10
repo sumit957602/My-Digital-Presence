@@ -47,6 +47,7 @@ span{
     border-bottom: .2rem solid transparent;
     border-left: .2rem solid var(--main-color);
     border-right: .2rem solid var(--main-color);
+    animation: aboutSpinner 8s linear infinite;
 }
 
 .about-content {
@@ -65,4 +66,10 @@ span{
 .btn-box.btns {
     display: inline-block;
     width: 15rem;
+}
+
+@keyframes aboutSpinner {
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
