@@ -69,14 +69,6 @@ app.get('/', (req, res) => {
     res.render("index.ejs");
 });
 
-app.get("/demouser", async (req, res) => {
-    let fakeUser = new User({ 
-        email: "abcd6@gmail.com",
-        username: "abcd6"
-    });
-    res.send(await User.register(fakeUser, "123456"));
-});
-
 app.get('/home', (req, res) => {
     res.render("index.ejs");
 });
