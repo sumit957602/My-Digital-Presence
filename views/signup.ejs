@@ -1,54 +1,53 @@
 <% layout("/layout/boilerplate") %>
 <body>
-    <div class="container">
-        <div class="signup-box">
-            <form action="#">
-                <div class="page-box">
-                    <div class="signup-title">
-                        <h2 class="signupTitle-text">Sign up</h2>
-                        <p class="user-email">Please signup to use this
-                            plateform</p>
-                    </div>
-                    <div class="page email-page">
-                        <div class="input-box">
-                            <input type="text" class="email" autofocus>
-                            <label>Enter your email</label>
-                        </div>
+    <div class="signup_body">
+    <div class="wrapper">
+       <form action="/signup" method="post" class="needs-validation" >
+        <h1>Sign up</h1>
 
-                        <div class="page password-page">
-                            <div class="input-box">
-                                <input type="password" class="password">
-                                <label>Enter your password</label>
-                            </div>
-                            <br />
-                            <div class="social-platform">
-                                <p>Or sign in with</p>
-                                <div class="social-icons">
-                                    <a href="#"><i
-                                            class="fab-brands fa-facebook-f"></i></a>
-                                    <a href="#"><i
-                                            class="fab-brands fa-google"></i></a>
-                                    <a href="#"><i
-                                            class="fab-brands fa-twitter"></i></a>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="forgot show">
-                                <label><input type="checkbox"
-                                        class="checkbox-pass">Show
-                                    password</label>
-                            </div>
-                            <br />
-                            <div class="btn-box">
-                                <button class="btn-back" type="button"
-                                    href="login.html">Back</button>
-                                <button type="submit" class="btn-signup">Sign
-                                    up</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+        <div class="input-box">
+            <div class="input-field">
+                <input type="text" placeholder="Full Name" required>
+                <i class="bx bxs-user"></i>
+                <span class="focus"></span>
             </div>
+            <div class="input-field">
+                <input type="text" placeholder="Username" required>
+                <i class="bx bxs-user"></i>
+                <span class="focus"></span>
+            </div>
+        </div>
 
-            <script src="script.js"></script>
-        </body>
+        <div class="input-box">
+            <div class="input-field">
+                <input type="email" placeholder="Email" required>
+                <i class="bx bxs-envelope"></i>
+                <span class="focus"></span>
+            </div>
+            <div class="input-field">
+                <input type="number" placeholder="Phone Number" required>
+                <i class="bx bxs-phone"></i>
+                <span class="focus"></span>
+            </div>
+        </div>
+
+        <div class="input-box">
+            <div class="input-field">
+                <input type="password" placeholder="Password" required>
+                <i class="bx bxs-lock-alt"></i>
+                <span class="focus"></span>
+            </div>
+            <div class="input-field">
+                <input type="password" placeholder="Conform Password" required>
+                <i class="bx bxs-lock-alt"></i>
+                <span class="focus"></span>
+            </div>
+        </div>
+
+        <label><input type="checkbox" required>I hereby declare that the above information provided is true and correct</label>
+        <button type="submit" class="btn">Sign up</button>
+       </form>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>

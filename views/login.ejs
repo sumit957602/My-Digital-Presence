@@ -1,63 +1,38 @@
 <% layout("/layout/boilerplate") %>
 <body>
-    <div class="container">
-        <div class="login-box">
-            <form action="#">
-                <div class="page-box">
-                    <div class="login-title">
-                        <h2 class="loginTitle-text">Login</h2>
-                        <p class="user-email">Please login to use this
-                            plateform</p>
-                    </div>
-                    <div class="page email-page">
-                        <div class="input-box">
-                            <input type="text" class="email" autofocus
-                                required aria-required>
-                            <label>Enter your email</label>
-                        </div><br />
-                        <div class="forgot">
-                            <a href="#">forgot email</a>
-                        </div>
-                        <div class="btn-box">
-                            <a href="#">Create
-                                account</a><br /><br /><br /><br />
-                            <button class="btn-next">Next</button>
-                        </div>
-                        <div class="social-platform">
-                            <p>Or sign in with</p>
-                            <div class="social-icons">
-                                <a href="#"><i
-                                        class="fab-brands fa-facebook-f"></i></a>
-                                <a href="#"><i
-                                        class="fab-brands fa-google"></i></a>
-                                <a href="#"><i
-                                        class="fab-brands fa-twitter"></i></a>
-                            </div>
-                        </div>
+    <div class="login_body">
+    <div class="wrapper_ln">
+        <form action="">
+            <h1>Login</h1>
 
-                        <div class="page password-page">
-                            <div class="input-box">
-                                <input type="password" class="password"
-                                    required>
-                                <label>Enter your password</label>
-                            </div>
-                            <br />
-
-                            <div class="forgot show">
-                                <a href="#">forgot password</a><br />
-                                <label><input type="checkbox"
-                                        class="checkbox-pass">Show
-                                    password</label>
-                            </div><br /><br />
-                            <div class="btn-box">
-                                <button class="btn-back">Back</button>
-                                <button type="submit"
-                                    class="btn-login">Login</button>
-                            </div>
-                        </div>
-                    </form>
+            <div class="input-box_ln">
+                <div class="input-field">
+                    <input type="text" placeholder="Username" required>
+                    <i class="bx bxs-user"></i>
+                    <span class="focus"></span>
                 </div>
             </div>
 
-            <script src="script.js"></script>
-        </body>
+            <div class="input-box_ln">
+                <div class="input-field">
+                    <input type="password" placeholder="Password" required>
+                    <i class="bx bxs-lock-alt"></i>
+                    <span class="focus"></span>
+                </div>
+            </div>
+
+            <div class="remember-forget">
+                <label><input type="checkbox">Remember me</label>
+                <a href="#">Forget Password?</a>
+            </div>
+            
+            <button type="submit" class="btn">Login</button>
+            <div class="register-link">
+                <p>Don't have an account? <a href="signup">Signup Now</a></p>
+            </div>
+           
+        </form>
+    </div>
+</div>   
+    <script src="script.js"></script>
+</body>
