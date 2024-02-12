@@ -28,6 +28,7 @@ async function main() {
 }
 
 app.listen(8080, () => {
+    console.log("http://localhost:8080/");
 });
 
 app.use(express.static(path.join(__dirname, "public/CSS")));
