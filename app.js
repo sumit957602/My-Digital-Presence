@@ -1,15 +1,16 @@
 const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
-const path = require("path"); 
+const path = require("path");
 const ejsMate = require('ejs-mate');
 const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user.js');
+const { saveRedirectUrl } = require('./middleware.js');
 
-const MONGO_URL = 'mongodb://localhost:27017/myweb';
+const MONGO_URL = 'mongodb+srv://sumit9523:pniW509R2O7Slibj@cluster0.diwyc0y.mongodb.net/?retryWrites=true&w=majority';
 
 function asyncWrap(fn) {
     fn(req, res, next).catch((err) => next(err));
@@ -18,9 +19,9 @@ function asyncWrap(fn) {
 main().then(() => {
     console.log('Connected to MongoDB');
 })
-.catch(err => {
-    console.error('Error connecting to MongoDB', err);
-});
+    .catch(err => {
+        console.error('Error connecting to MongoDB', err);
+    });
 
 async function main() {
     await mongoose.connect(MONGO_URL);
@@ -61,7 +62,7 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
     req.time = new Date(Date.now()).toString();
-    console.log(req.time);
+    res.locals.currentUser = req.user;
     next();
 });
 
@@ -74,19 +75,43 @@ app.get('/home', (req, res) => {
 });
 
 app.get('/about', (req, res) => {
-    res.render("about.ejs");
+    if (req.isAuthenticated()) {
+        res.render("about.ejs");
+    } else {
+        req.session.redirectUrl = req.originalUrl;
+        req.flash('error', 'You must be logged in first!');
+        res.redirect('/login');
+    }
 });
 
 app.get('/education', (req, res) => {
-    res.render("education.ejs");
+    if (req.isAuthenticated()) {
+        res.render("education.ejs");
+    } else {
+        req.flash('error', 'You must be logged in first!');
+        res.redirect('/login');
+        req.session.redirectUrl = req.originalUrl;
+    }
 });
 
 app.get('/skills', (req, res) => {
-    res.render("skills.ejs");
+    if (req.isAuthenticated()) {
+        res.render("skills.ejs");
+    } else {
+        req.flash('error', 'You must be logged in first!');
+        res.redirect('/login');
+        req.session.redirectUrl = req.originalUrl;
+    }
 });
 
 app.get('/contact', (req, res) => {
-    res.render("contact.ejs");
+    if (req.isAuthenticated()) {
+        res.render("contact.ejs");
+    } else {
+        req.flash('error', 'You must be logged in first!');
+        res.redirect('/login');
+        req.session.redirectUrl = req.originalUrl;
+    }
 });
 
 app.get('/login', (req, res) => {
@@ -98,11 +123,26 @@ app.get('/signup', (req, res) => {
 });
 
 app.post("/signup", async (req, res) => {
-    let { name, email, password, phone_no } = req.body;
-    const newUser = new User({ name, email, phone_no });
+    let { name, username, email, phone_no, password } = req.body;
+    const newUser = new User({ name, username, email, phone_no });
     const registeredUser = await User.register(newUser, password);
-    console.log(registeredUser);
     res.redirect('/login');
+});
+
+app.post('/login', saveRedirectUrl, passport.authenticate('local', 
+    { failureFlash: true, failureRedirect: '/login' }), async (req, res) => {
+        req.flash('success', 'Welcome !');
+        res.redirect(res.locals.redirectUrl || '/home');
+});
+
+app.get('/logout', (req, res, next) => {
+    req.logout((err) => {
+        if (err) {
+            return next(err);
+        }
+        req.flash('success', 'Goodbye!');
+        res.redirect('/home');
+    });
 });
 
 app.all("*", (req, res, next) => {

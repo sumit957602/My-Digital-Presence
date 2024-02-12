@@ -27,9 +27,12 @@
                 <a href="education">Education</a>
                 <a href="skills">Skills</a>
                 <a href="contact">Contact</a>
-                <a href="login">Login</a>
-                <a href="signup">Signup</a>
-
+                <% if(!currentUser) { %>
+                    <a class="login" href="login">Login</a>
+                    <a class="signup" href="signup">Signup</a>
+                <% } else { %>
+                    <a class="logout" href="logout">Logout</a>
+                <% } %>
                 <span class="active-nav"></span>
             </nav>
         </header>

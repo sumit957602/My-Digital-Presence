@@ -2,12 +2,12 @@
 <body>
     <div class="login_body">
     <div class="wrapper_ln">
-        <form action="">
+        <form action="/login" method="post">
             <h1>Login</h1>
 
             <div class="input-box_ln">
                 <div class="input-field">
-                    <input type="text" placeholder="Username" required>
+                    <input name="username" type="text" placeholder="Username" required>
                     <i class="bx bxs-user"></i>
                     <span class="focus"></span>
                 </div>
@@ -15,7 +15,7 @@
 
             <div class="input-box_ln">
                 <div class="input-field">
-                    <input type="password" placeholder="Password" required>
+                    <input name="password" type="password" placeholder="Password" required>
                     <i class="bx bxs-lock-alt"></i>
                     <span class="focus"></span>
                 </div>
